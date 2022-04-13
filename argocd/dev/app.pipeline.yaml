@@ -8,13 +8,13 @@ metadata:
     - resources-finalizer.argocd.argoproj.io
 spec:
   destination:
-    namespace: dev
+    namespace: codefresh
     name: in-cluster
   project: pipeline
   source:
-    repoURL: https://github.com/tpayne/kubernetes-examples
+    repoURL: https://github.com/tpayne/codefresh-demo.git
     targetRevision: main
-    path: ./YAML/Argocd/helm/dev  # Directory that contains the child apps
+    path: ./helm/dev  # Directory that contains the child apps
     helm:
       parameters:
         - name: buildID
@@ -24,5 +24,5 @@ spec:
   syncPolicy:
     syncOptions:
       - CreateNamespace=true
-    automated:
-      prune: true
+#    automated:
+#      prune: true
